@@ -1,0 +1,32 @@
+= link_to 'See Similar People Nearby', locations_path
+%p#notice= notice
+
+%p
+  %b Name
+  = @location.user.name
+%p
+  %b Learning Interests:
+  = @location.user.learning_interest_list
+%p
+  %b Teaching Interests:
+  = @location.user.teaching_interest_list
+%p
+  %b Address:
+  = @location.address
+%p
+  %b Latitude:
+  = @location.latitude
+%p
+  %b Longitude:
+  = @location.longitude
+
+= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}"
+
+%h3 Nearby Locations
+- for location in @location.nearbys(10)
+  %ul
+    %li
+      = link_to location.address, location
+      = location.distance.to_i.round(2)
+      miles
+

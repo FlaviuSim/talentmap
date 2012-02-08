@@ -1,0 +1,36 @@
+%h1 Nearby Talent
+
+= link_to 'My Profile', location_path(current_user.location.id)
+
+= form_tag locations_path, :method => :get do
+  %p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search Near This Location", :name => nil
+
+%table
+  %tr
+    %th Name
+    %th Talents
+    %th Craving
+    %th Address
+    %th Latitude
+    %th Longitude
+    %th
+    %th
+    %th
+
+  - @locations.each do |location|
+    %tr
+      %td= location.user.name
+      %td= location.user.teaching_interest_list
+      %td= location.user.learning_interest_list
+      %td= location.address
+      %td= location.latitude
+      %td= location.longitude
+      %td= link_to 'Show', location
+      %td= link_to 'Edit', edit_location_path(location)
+      %td= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Location', new_location_path
