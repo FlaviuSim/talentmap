@@ -1,2 +1,4 @@
 == Welcome to TalentMap
 This is a project started by Jennifer Turliuk and Jeremy Einhorn as part of Startup Chile.
+
+I (Flaviu Simihaian) coded this demo up for kicks.
